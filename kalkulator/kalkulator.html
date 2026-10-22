@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalcFlow Pro - Kalkulator Operator JavaScript Modern & Elegan</title>
+    <meta name="description" content="Aplikasi kalkulator interaktif modern dengan desain minimalis, eksekusi operator aritmatika instan, dan pencatatan riwayat komputasi cerdas.">
+    <link rel="stylesheet" href="kalkulator.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧮</text></svg>">
+</head>
+<body>
+    <!-- Background Ambient Glow & Grid -->
+    <div class="ambient-glow ambient-glow-1"></div>
+    <div class="ambient-glow ambient-glow-2"></div>
+    <div class="ambient-glow ambient-glow-3"></div>
+    <div class="bg-grid-overlay"></div>
+
+    <div class="app-container">
+        <!-- Top Navigation -->
+        <header class="navbar">
+            <div class="container nav-container">
+                <a href="#hero" class="brand">
+                    <div class="brand-icon">🧮</div>
+                    <div class="brand-text">
+                        Calc<span>Flow</span>
+                        <span class="brand-badge">v5.0</span>
+                    </div>
+                </a>
+
+                <ul class="nav-menu">
+                    <li><a href="#hero" class="nav-link active">Beranda</a></li>
+                    <li><a href="#kalkulator" class="nav-link">Kalkulator</a></li>
+                    <li><a href="#fitur" class="nav-link">Fitur</a></li>
+                    <li><a href="#panduan" class="nav-link">Operator JS</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <button id="themeToggleBtn" class="theme-toggle-btn" onclick="toggleTheme()" title="Ubah Tema" aria-label="Toggle Theme">
+                        ☀️
+                    </button>
+                    <a href="#kalkulator" class="btn-cta">
+                        Mulai Hitung ⚡
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Hero Section -->
+            <section id="hero" class="hero">
+                <div class="container">
+                    <div class="hero-pill">
+                        <span class="pulse-dot"></span>
+                        JavaScript Operator Engine • RPL Edition
+                    </div>
+
+                    <h1 class="hero-title judul">
+                        Kalkulator Operator Javascript 🧮
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        Antarmuka kalkulator interaktif bertenaga JavaScript murni. Hadir dengan visual modern glassmorphism, perhitungan presisi tinggi, dan pencatatan riwayat otomatis.
+                    </p>
+
+                    <div class="hero-badges">
+                        <div class="metric-chip">⚡ <strong>0ms</strong> Latensi Eksekusi</div>
+                        <div class="metric-chip">🔒 <strong>100%</strong> Pemrosesan Lokal</div>
+                        <div class="metric-chip">🎯 <strong>Float 64-bit</strong> Presisi IEEE 754</div>
+                        <div class="metric-chip">📱 <strong>Responsif</strong> Semua Layar</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Calculator Showcase Section -->
+            <section id="kalkulator" class="calculator-showcase">
+                <div class="container">
+                    <div class="showcase-grid">
+                        
+                        <!-- Left Main: The Calculator Card -->
+                        <div class="calc-card">
+                            <div class="card-header">
+                                <div class="card-title-group">
+                                    <h2>Konsol Perhitungan</h2>
+                                    <p>Pilih mode dan masukkan angka untuk kalkulasi instan</p>
+                                </div>
+                                <div class="mode-tabs">
+                                    <button id="tabOperator" class="mode-tab-btn active" onclick="switchTab('operator')">Dual Input</button>
+                                    <button id="tabKeypad" class="mode-tab-btn" onclick="switchTab('keypad')">Keypad Cepat</button>
+                                </div>
+                            </div>
+
+                            <!-- Mode 1: Dual Input (Original Requirements Compatible) -->
+                            <div id="operatorModeContent">
+                                <!-- Inputs Area -->
+                                <div class="input-grid">
+                                    <div class="input-field-wrapper">
+                                        <div class="input-label">
+                                            <span>Angka Pertama</span>
+                                            <span class="sub">(Variabel a)</span>
+                                        </div>
+                                        <div class="input-container">
+                                            <span class="input-icon">①</span>
+                                            <!-- Original ID: angka1 -->
+                                            <input id="angka1" class="calc-input" type="number" step="any" placeholder="Masukkan angka..." autofocus>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-field-wrapper">
+                                        <div class="input-label">
+                                            <span>Angka Kedua</span>
+                                            <span class="sub">(Variabel b)</span>
+                                        </div>
+                                        <div class="input-container">
+                                            <span class="input-icon">②</span>
+                                            <!-- Original ID: angka2 -->
+                                            <input id="angka2" class="calc-input" type="number" step="any" placeholder="Masukkan angka...">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Utility & Quick Presets Bar -->
+                                <div class="calc-utils">
+                                    <div class="presets-label">
+                                        <span>Preset Cepat:</span>
+                                        <button type="button" class="preset-chip" onclick="setPreset(120, 24, '/')">120 ÷ 24</button>
+                                        <button type="button" class="preset-chip" onclick="setPreset(75, 25, '+')">75 + 25</button>
+                                        <button type="button" class="preset-chip" onclick="setPreset(12, 12, '*')">12 × 12</button>
+                                    </div>
+                                    <div style="display: flex; gap: 0.5rem;">
+                                        <button type="button" class="util-btn" onclick="swapInputs()" title="Tukar nilai a dan b">
+                                            ⇄ Tukar Posisi
+                                        </button>
+                                        <button type="button" class="util-btn" onclick="resetCalculator()" title="Bersihkan input">
+                                            ↺ Reset
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Operator Buttons Group -->
+                                <div class="operator-section-title">Pilih Operator Aritmatika</div>
+                                <div class="operator-grid">
+                                    <!-- Original Buttons & Calls: hitung('+'), hitung('-'), hitung('/'), hitung('*') -->
+                                    <button class="op-btn active" data-op="+" onclick="hitung('+')" title="Penjumlahan (Addition)">
+                                        <span>+</span>
+                                        <span class="op-name">Tambah</span>
+                                    </button>
+                                    <button class="op-btn" data-op="-" onclick="hitung('-')" title="Pengurangan (Subtraction)">
+                                        <span>−</span>
+                                        <span class="op-name">Kurang</span>
+                                    </button>
+                                    <button class="op-btn" data-op="*" onclick="hitung('*')" title="Perkalian (Multiplication)">
+                                        <span>×</span>
+                                        <span class="op-name">Kali</span>
+                                    </button>
+                                    <button class="op-btn" data-op="/" onclick="hitung('/')" title="Pembagian (Division)">
+                                        <span>÷</span>
+                                        <span class="op-name">Bagi</span>
+                                    </button>
+                                    <!-- Extended Modern Operators -->
+                                    <button class="op-btn" data-op="%" onclick="hitung('%')" title="Modulus (Sisa Pembagian)">
+                                        <span>%</span>
+                                        <span class="op-name">Modulo</span>
+                                    </button>
+                                    <button class="op-btn" data-op="^" onclick="hitung('^')" title="Eksponensial (Pangkat)">
+                                        <span>xʸ</span>
+                                        <span class="op-name">Pangkat</span>
+                                    </button>
+                                </div>
+
+                                <!-- Result Box Container -->
+                                <div id="resultBox" class="result-box">
+                                    <div id="toastNotice" class="toast-notice">Tersalin ke Clipboard! ✓</div>
+                                    <div class="result-header">
+                                        <span class="result-label">Output Evaluasi</span>
+                                        <div class="result-actions">
+                                            <button class="icon-action-btn" onclick="copyResult()" title="Salin hasil">
+                                                📋 Salin
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div id="exprPreview" class="result-expression">--</div>
+                                    <!-- Original Target: p#hasil -->
+                                    <p id="hasil" class="empty-state">Menunggu input angka & operator...</p>
+                                </div>
+                            </div>
+
+                            <!-- Mode 2: Full Keypad Mode -->
+                            <div id="keypadModeContent" class="keypad-container">
+                                <div class="keypad-screen">
+                                    <div id="keypadExprDisplay" class="keypad-history-display"></div>
+                                    <div id="keypadDisplay" class="keypad-main-display">0</div>
+                                </div>
+                                <div class="keypad-grid">
+                                    <button class="kp-btn clear-btn" onclick="keypadClear()">C</button>
+                                    <button class="kp-btn action-op" onclick="keypadInput('(')">(</button>
+                                    <button class="kp-btn action-op" onclick="keypadInput(')')">)</button>
+                                    <button class="kp-btn action-op" onclick="keypadBackspace()">⌫</button>
+
+                                    <button class="kp-btn" onclick="keypadInput('7')">7</button>
+                                    <button class="kp-btn" onclick="keypadInput('8')">8</button>
+                                    <button class="kp-btn" onclick="keypadInput('9')">9</button>
+                                    <button class="kp-btn action-op" onclick="keypadInput('/')">÷</button>
+
+                                    <button class="kp-btn" onclick="keypadInput('4')">4</button>
+                                    <button class="kp-btn" onclick="keypadInput('5')">5</button>
+                                    <button class="kp-btn" onclick="keypadInput('6')">6</button>
+                                    <button class="kp-btn action-op" onclick="keypadInput('*')">×</button>
+
+                                    <button class="kp-btn" onclick="keypadInput('1')">1</button>
+                                    <button class="kp-btn" onclick="keypadInput('2')">2</button>
+                                    <button class="kp-btn" onclick="keypadInput('3')">3</button>
+                                    <button class="kp-btn action-op" onclick="keypadInput('-')">−</button>
+
+                                    <button class="kp-btn" onclick="keypadInput('0')">0</button>
+                                    <button class="kp-btn" onclick="keypadInput('.')">.</button>
+                                    <button class="kp-btn action-op" onclick="keypadInput('+')">+</button>
+                                    <button class="kp-btn action-op" onclick="keypadInput('%')">%</button>
+
+                                    <button class="kp-btn equals" onclick="keypadEvaluate()">= Hitung</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Sidebar: History & Quick Tips -->
+                        <div class="sidebar-panel">
+                            <!-- History Card -->
+                            <div class="history-card">
+                                <div class="history-header">
+                                    <h3>🕒 Riwayat Perhitungan</h3>
+                                    <button class="clear-history-btn" onclick="clearHistory()">Hapus Semua</button>
+                                </div>
+                                <div id="historyList" class="history-list">
+                                    <!-- Rendered dynamically via kalkulator.js -->
+                                </div>
+                            </div>
+
+                            <!-- Shortcuts / Tips Card -->
+                            <div class="tips-card">
+                                <h4>💡 Pintasan & Tips Cepat</h4>
+                                <ul class="tips-list">
+                                    <li>
+                                        <span class="kbd-badge">Enter</span>
+                                        <span>Hitung otomatis saat selesai mengetik angka</span>
+                                    </li>
+                                    <li>
+                                        <span class="kbd-badge">Esc</span>
+                                        <span>Bersihkan seluruh input seketika (Reset)</span>
+                                    </li>
+                                    <li>
+                                        <span class="kbd-badge">Klik Riwayat</span>
+                                        <span>Muat kembali angka masa lalu ke form input</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Grid Section -->
+            <section id="fitur" class="container" style="margin-bottom: 5rem;">
+                <div class="section-header">
+                    <div class="section-tag">Keunggulan Desain</div>
+                    <h2 class="section-title">Fitur Modern Dirancang untuk Efisiensi</h2>
+                    <p class="section-desc">Kombinasi estetika minimalis elegan dengan arsitektur kode JavaScript yang ringan dan kokoh.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper icon-blue">⚡</div>
+                        <h3 class="feature-title">Eksekusi Instan</h3>
+                        <p class="feature-desc">Hasil dihitung secara realtime tanpa perlu memuat ulang halaman. Didukung oleh event listener modern.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper icon-cyan">🛡️</div>
+                        <h3 class="feature-title">Validasi Cerdas</h3>
+                        <p class="feature-desc">Mencegah kesalahan kalkulasi pembagian dengan nol, nilai NaN, dan memberikan pesan kesalahan yang ramah pengguna.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper icon-emerald">💾</div>
+                        <h3 class="feature-title">Riwayat Interaktif</h3>
+                        <p class="feature-desc">Semua riwayat operasi disimpan otomatis di peramban. Klik item riwayat kapan saja untuk menggunakannya kembali.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper icon-violet">🌓</div>
+                        <h3 class="feature-title">Tema Adaptif</h3>
+                        <p class="feature-desc">Tampilan Dark Mode elegan berpadu dengan Light Mode minimalis yang bersih, dirancang untuk kenyamanan mata.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- JavaScript Arithmetic Reference Section -->
+            <section id="panduan" class="cheat-sheet-section">
+                <div class="container">
+                    <div class="section-header">
+                        <div class="section-tag">Eksplorasi Kode</div>
+                        <h2 class="section-title">Referensi Operator Aritmatika JS</h2>
+                        <p class="section-desc">Pelajari sintaks operator aritmatika bawaan ECMAScript dan coba langsung pada kalkulator.</p>
+                    </div>
+
+                    <div class="cheat-sheet-card">
+                        <table class="ops-table">
+                            <thead>
+                                <tr>
+                                    <th>Simbol</th>
+                                    <th>Nama Operator</th>
+                                    <th>Sintaks JavaScript</th>
+                                    <th>Deskripsi Operasi</th>
+                                    <th>Aksi Cepat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="op-symbol-badge">+</span></td>
+                                    <td><strong>Penjumlahan (Addition)</strong></td>
+                                    <td><code class="code-syntax">let c = a + b;</code></td>
+                                    <td>Menjumlahkan nilai numerik atau menggabungkan string.</td>
+                                    <td><button class="try-demo-btn" onclick="setPreset(48, 52, '+')">Coba (48 + 52)</button></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="op-symbol-badge">−</span></td>
+                                    <td><strong>Pengurangan (Subtraction)</strong></td>
+                                    <td><code class="code-syntax">let c = a - b;</code></td>
+                                    <td>Mengurangi angka pertama dengan angka kedua.</td>
+                                    <td><button class="try-demo-btn" onclick="setPreset(100, 37, '-')">Coba (100 − 37)</button></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="op-symbol-badge">×</span></td>
+                                    <td><strong>Perkalian (Multiplication)</strong></td>
+                                    <td><code class="code-syntax">let c = a * b;</code></td>
+                                    <td>Mengalikan dua nilai numerik dengan presisi floating point.</td>
+                                    <td><button class="try-demo-btn" onclick="setPreset(15, 8, '*')">Coba (15 × 8)</button></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="op-symbol-badge">÷</span></td>
+                                    <td><strong>Pembagian (Division)</strong></td>
+                                    <td><code class="code-syntax">let c = a / b;</code></td>
+                                    <td>Membagi angka pertama dengan angka kedua.</td>
+                                    <td><button class="try-demo-btn" onclick="setPreset(144, 12, '/')">Coba (144 ÷ 12)</button></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="op-symbol-badge">%</span></td>
+                                    <td><strong>Modulus (Remainder)</strong></td>
+                                    <td><code class="code-syntax">let c = a % b;</code></td>
+                                    <td>Menghasilkan sisa hasil bagi dari bilangan bulat.</td>
+                                    <td><button class="try-demo-btn" onclick="setPreset(29, 4, '%')">Coba (29 % 4)</button></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="op-symbol-badge">**</span></td>
+                                    <td><strong>Eksponensial (Exponentiation)</strong></td>
+                                    <td><code class="code-syntax">let c = a ** b;</code></td>
+                                    <td>Memangkatkan angka pertama dengan angka kedua (ES2016).</td>
+                                    <td><button class="try-demo-btn" onclick="setPreset(2, 8, '^')">Coba (2⁸)</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Professional Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <div class="brand">
+                            <div class="brand-icon">🧮</div>
+                            <div class="brand-text">Calc<span>Flow</span></div>
+                        </div>
+                        <p>Kalkulator web presisi tinggi dengan pendekatan desain modern minimalis dan pengalaman interaktif yang intuitif.</p>
+                    </div>
+
+                    <div class="footer-col">
+                        <h5>Navigasi</h5>
+                        <ul>
+                            <li><a href="#hero">Beranda</a></li>
+                            <li><a href="#kalkulator">Kalkulator Interaktif</a></li>
+                            <li><a href="#fitur">Fitur Unggulan</a></li>
+                            <li><a href="#panduan">Dokumentasi Operator</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h5>Teknologi</h5>
+                        <ul>
+                            <li><a href="#">HTML5 Semantic</a></li>
+                            <li><a href="#">Vanilla CSS Glassmorphism</a></li>
+                            <li><a href="#">JavaScript ES6+ DOM</a></li>
+                            <li><a href="#">Web Storage API</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <div>
+                        &copy; 2026 <strong>CalcFlow</strong>. Rekayasa Perangkat Lunak (RPL) Modern Web Series.
+                    </div>
+                    <div class="footer-status">
+                        <span class="status-dot"></span>
+                        <span>Sistem Aktif • Semua Layanan Normal</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript Logic (Original File Kept & Enhanced) -->
+    <script src="kalkulator.js"></script>
+</body>
+</html>

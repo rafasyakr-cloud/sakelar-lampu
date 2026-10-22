@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lampu Hidup</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #222;
+      color: white;
+      font-family: sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      gap: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .btn-hidup {
+      background-color: gold;
+      color: black;
+    }
+
+    .btn-mati {
+      background-color: #333;
+      color: white;
+    }
+
+    .box {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      font-size: 5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 15px;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.6);
+      /* default: mati */
+      transition: background-color 0.4s ease;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="box" id="lampu">
+      👨‍👩‍👦‍👦
+    </div>
+    <div class="buttons">
+      <button class="btn-hidup" onclick="hidup()">Lampu Hidup</button>
+      <button class="btn-mati" onclick="mati()">Lampu Mati</button>
+    </div>
+  </div>
+
+  <script>
+    const lampu = document.getElementById("lampu");
+
+    /* 
+      Task 1: Buat function hidup() untuk merubah background-color lampu menjadi warna: rgba(255, 255, 0, 0.4)
+      Task 2: Buat function mati() untuk merubah background-color lampu menjadi warna: rgba(0,0,0,0.6)
+    */
+
+function hidup() {
+  lampu.style.backgroundColor = "rgba(255, 255, 0, 0.4)";
+}
+
+function mati() {
+  lampu.style.backgroundColor = "rgba(0,0,0,0.6)";
+}
+  </script>
+</body>
+
+</html>

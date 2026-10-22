@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi DOM & Event Handling - RPL B</title>
+    <link rel="stylesheet" href="kalkulator/kalkulator.css">
+    <style>
+        .portal-card {
+            max-width: 650px;
+            margin: 3rem auto;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem;
+            backdrop-filter: var(--backdrop-blur);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+        #judul {
+            font-size: 1.5rem;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            margin: 1.5rem 0;
+            display: inline-block;
+        }
+        #tombol {
+            cursor: pointer;
+            padding: 0.85rem 1.75rem;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: var(--radius-full);
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all var(--transition-fast);
+            user-select: none;
+            margin-bottom: 2rem;
+        }
+        #tombol:hover {
+            transform: scale(1.05);
+            background: rgba(239, 68, 68, 0.2);
+            border-color: rgba(239, 68, 68, 0.5);
+        }
+        .portal-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-full);
+            background: var(--gradient-brand);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+            transition: all var(--transition-fast);
+        }
+        .portal-link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-glow ambient-glow-1"></div>
+    <div class="ambient-glow ambient-glow-2"></div>
+    <div class="bg-grid-overlay"></div>
+
+    <div class="app-container" style="padding: 2rem;">
+        <div class="portal-card">
+            <div class="hero-pill">
+                <span class="pulse-dot"></span>
+                Lab Praktikum JavaScript • Rekayasa Perangkat Lunak
+            </div>
+            
+            <h1 style="font-size: 2rem; margin-bottom: 1rem; background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                Praktikum DOM & Event Handling
+            </h1>
+            
+            <!-- Elemen yang dimanipulasi oleh script.js -->
+            <h1 id="judul">DOM & Event Handling</h1>
+            <div>
+                <h1 id="tombol">JANGAN DI KLIKK!!!</h1>
+            </div>
+
+            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--card-border);">
+                <p style="color: var(--text-secondary); margin-bottom: 1.25rem;">
+                    Buka proyek landing page kalkulator dengan desain modern minimalis:
+                </p>
+                <a href="kalkulator/kalkulator.html" class="portal-link-btn">
+                    🚀 Buka Landing Page Kalkulator Pro
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
